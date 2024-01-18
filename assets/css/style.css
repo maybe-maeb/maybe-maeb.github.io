@@ -1,0 +1,28 @@
+/*
+    Fonts: "Spectral SC", Garamond
+*/
+
+:root{
+    --black: #0C0C0C;
+    --white: #F7F7FF;
+    --purple: #ab43c0;
+    --yellow: #FFE45E;
+}
+
+body{
+    background-image: url("../img/bg/website_bg-1.jpg");
+    color: var(--white);
+    font-family: Garamond, sans;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: "Spectral SC";
+}
+
+a{
+    color: var(--purple);
+}
+
+h1{
+    text-align: center;
+}
