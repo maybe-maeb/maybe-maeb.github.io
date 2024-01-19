@@ -26,3 +26,115 @@ a{
 h1{
     text-align: center;
 }
+
+.button{
+    border: 1px solid var(--white);
+    background-color: var(--black);
+    color: var(--white);
+    border-radius: 50px;
+    padding: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.button:hover{
+    background-color: var(--white);
+    color: var(--black);
+}
+
+.steamembed{
+     width:100%;
+     height: 190px;
+}
+
+.imgcol{
+    text-align: center;
+}
+
+.smallimg{
+    width: 40%
+}
+
+.headercol{
+    text-align: center;
+    margin-top: 100px;
+}
+
+.itemrow{
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.blogpost{
+    height: 150px;
+    width: 32%;
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+}
+
+.blockpost:hover{
+    background-color: #0C0C0C;
+}
+
+#dspost{
+    background-image: url("../img/blogposts/ds.jpg");
+}
+
+#bioshockpost{
+    background-image: url("../img/blogposts/wyk.webp")
+}
+
+#lgbtqpost{
+    background-image: url("../img/blogposts/lgbtq.jpg")
+}
+
+#tloupost{
+    background-image: url("../img/blogposts/tlou.jpg")
+}
+
+#sh2post{
+    background-image: url("../img/blogposts/sh2.jpg")
+}
+
+#slhpost{
+    background-image: url("../img/blogposts/slh.jpg");
+}
+
+.blogoverlay{
+    display: none;
+}
+
+.blogpost:hover .blogoverlay{
+    display: inline;
+}
+
+.ytembed{
+    width:100%;
+    height:200px;
+}
+
+.itchembed{
+    width: 100%;
+    height: 167px;
+}
+
+.labelheader{
+    text-align: center;
+}
+
+.ytcol{
+    height: 400px;
+}
+
+.modelimg{
+    width: 45%;
+    object-fit: cover;
+    height: 200px;
+    margin: 2%;
+}
+
+.mayavid{
+    width: 100%;
+    height: 300px;
+}
