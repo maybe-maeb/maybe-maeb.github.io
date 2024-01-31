@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<!--Notes
+
+-->
+
+<head>
+    <!--Meta-->
+    <title>Sources</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="So... You want to be a sellout author.">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="author" content="Mae Bridgeman">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <!--D3-->
+    <script src="https://d3js.org/d3.v6.js"></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="headerAccent">
+                        <div class="headerDivider"></div>
+                        <div class="headerAccentText accent">So,</div>
+                        <div class="headerDivider"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>You want to write a bestselling novel</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="../index.html" class="headerLink">Home</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="filtertable.html" class="headerLink">Filter Table</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="datavisualizations.html" class="headerLink">Visualizations</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="sources.html" class="headerLink">Sources</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Header -->
+
+    <!-- Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" id="sourcelist">
+                <a href="https://en.wikipedia.org/wiki/List_of_best-selling_books" class="_blank">https://en.wikipedia.org/wiki/List_of_best-selling_books</a><br>
+                <!--Sources will be displayed here-->
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="row">
+            <a href="secretpage.html">Secret page???</a>
+        </div>
+    </div>
+    <!-- End of Content -->
+
+        <!--Footer-->
+        <div class="resultsbox">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <h2>Results</h2>
+                        <a href="results.html" class="clickable"></a>
+                    </div>
+                </div>
+            </div>
+        </div>   
+        <!--End of footer-->
+
+    <script>
+        //Get data from GitHub repository
+        function Get(yourUrl) {
+            var Httpreq = new XMLHttpRequest(); // a new request
+            Httpreq.open("GET", yourUrl, false);
+            Httpreq.send(null);
+            return Httpreq.responseText;
+        }
+
+        var data = JSON.parse(Get("https://raw.githubusercontent.com/8BallStudios/GIMM260/main/data.json"));
+        console.log(data);
+
+        //List the sources
+        for(let i = 0; i < data.length; i++) {
+            if (data[i].source != "")
+            {
+                console.log(data[i]);
+                document.getElementById("sourcelist").innerHTML += `<a href = "` + data[i].source + `" class = "_blank">` + data[i].source + `</a><br>`;
+            }
+        }
+        console.log(data[2].title);
+
+        /*fetch('https://raw.githubusercontent.com/8BallStudios/GIMM260/main/data.json')
+            .then((response) => response.json())
+            .then((json) => data = json)
+            .then(json => console.log(data));*/
+    </script>
+
+</body>
+
+</html>

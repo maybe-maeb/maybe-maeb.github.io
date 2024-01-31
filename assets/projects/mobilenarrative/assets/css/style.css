@@ -1,0 +1,264 @@
+/* Site colors */
+:root {
+    --black: #343330;
+    --green: #5F6130;
+    --brown: #7E5920;
+    --cream: #DFD6A7;
+    --white: #EAF2EF;
+}
+
+/* Custom font */
+@font-face {
+    font-family: newspaperFont;
+    src: url(../fonts/OldNewspaperFont.ttf);
+}
+
+a {
+    color: var(--brown);
+    font-size: 18px;
+}
+
+body {
+    background-color: var(--white);
+    font-family: newspaperFont;
+}
+
+p {
+    color: var(--black);
+    font-size: 20px;
+}
+
+h1 {
+    font-weight: 200;
+    font-size: 75px;
+}
+
+/* Used for D3 data visualizations */
+iframe {
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    width: 100%;
+    height: 80vh;
+}
+
+li{
+    font-size: 18px;
+}
+
+.headerAccent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.headerAccentText {
+    flex-grow: 1;
+    font-size: 50px;
+}
+
+.headerDivider {
+    flex-grow: 3;
+    height: 1px;
+    background-color: var(--white);
+}
+
+.header {
+    /*background-color: var(--black);*/
+    background: linear-gradient(to top, #00000099, #00000099), url(../img/library.jpg) top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: var(--white);
+    padding-bottom: 50px;
+    padding-top: 25px;
+    margin-bottom: 25px;
+    border-width: 0px;
+    border-bottom-width: 10px;
+    border-style: solid;
+}
+
+/*The "Your dream of becoming a sellout..." section*/
+#sellouttext {
+    /*background-color: var(--black);*/
+    text-align: center;
+
+	border-radius: 50%;
+	margin: 10px;
+
+	transform: scale(1);
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+        color: var(--black);
+        font-weight: 100;
+        font-size: 20px;
+	}
+
+	70% {
+		transform: scale(1);
+        color: black;
+        font-weight: 1000;
+        font-size: 50px;
+	}
+
+	100% {
+		transform: scale(0.95);
+        color: var(--black);
+        font-weight: 100;
+        font-size: 20px;
+	}
+}
+
+.bounce {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    transform-origin: top;
+    animation-name: bounce;
+    animation-timing-function: ease;
+}
+
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(10px); }
+    100% { transform: translateY(0); }
+  }
+
+.sourcesbox{
+    height:200px;
+    padding-top:75px;
+    background: linear-gradient(to top, #00000099, #00000099), url(../img/books.jpg) top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--white);
+    text-align: center;
+    position:relative;
+}
+
+.resultsbox{
+    height:200px;
+    padding-top:75px;
+    background: linear-gradient(to top, #00000099, #00000099), url(../img/stack.jpg) center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: var(--white);
+    text-align: center;
+    position:relative;
+}
+
+.headerrow{
+    height: 80vh;
+    padding-top: 30vh;
+}
+
+.linkbox{
+    height: 300px;
+    background-color: var(--brown);
+    border-radius: 50px;
+    padding-top: 90px;
+    border-style: solid;
+}
+
+.clickable {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;     
+    z-index: 1;
+  }
+
+#visualizationslinkbox{
+    background: url(../img/graph.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#filtertablelinkbox{
+    background: url(../img/datatable.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+}
+
+.crossout{
+    text-decoration: line-through;
+}
+
+.headerLink {
+    color: var(--white);
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 25px;
+    white-space: nowrap;
+}
+
+.headerLinkDiv{
+    padding-bottom: 20px;
+}
+
+.accent {
+    font-family: 'Brush Script MT', cursive;
+}
+
+.hand {
+    height: 25px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Dropdowns on the filter table */
+.select{
+    width: 150px;
+    height:25px;
+}
+.filters{
+    background-color: var(--brown);
+}
+
+/* Used for bubble plot data visualization */
+.bubbles {
+    stroke-width: 2px;
+    stroke: white;
+}
+
+.bubbles:hover {
+    stroke: black;
+}
+
+/* Used for secret page */
+#fnafpage {
+    background-color: black;
+}
+
+.youtube-container {
+    overflow: hidden;
+    width: 100%;
+    /* Keep it the right aspect-ratio */
+    aspect-ratio: 16/9;
+    /* No clicking/hover effects */
+    pointer-events: none;
+}
+
+.youtube-container iframe {
+    /* Extend it beyond the viewport... */
+    width: 300%;
+    height: 100%;
+    /* ...and bring it back again */
+    margin-left: -100%;
+}
+
+.graph{
+    overflow-x: scroll;
+    border:none;
+}
+
+.filterLabel{
+    font-size: 15px;
+}

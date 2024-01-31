@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+
+<!--Notes
+
+    Changes made after meeting:
+        Made font size on the filter table sort filters larger
+        Added animation to font awesome arrow icon on home page
+        Organized parallel graph items alphabetically
+        Organized filter table sorts alphabetically
+        Added bottom padding to navigation bar
+
+-->
+
+<head>
+    <!--Meta-->
+    <title>Sellout Author</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="So... You want to be a sellout author.">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="author" content="Mae Bridgeman">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!--D3-->
+    <script src="https://d3js.org/d3.v6.js"></script>
+</head>
+
+<body>
+    <!-- Header -->
+    <!--
+    <div class="header">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="headerAccent">
+                        <div class="headerDivider"></div>
+                        <div class="headerAccentText accent">So,</div>
+                        <div class="headerDivider"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>You want to write a bestselling novel</h1>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>-->
+
+    <div class="header">
+
+        <div class="container">
+            <div class="row headerrow">
+                <a href="../../../index.html">Return to Portfolio</a>
+                <div class="col-md-12">
+                    <h1>Creativity is overrated.</h1>
+                    <h3>Let's sell out.</h3>
+                    <br><br>
+                    <h5>Scroll</h5>
+                    <i class="fa-solid fa-arrow-down bounce"></i>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-md-5 linkbox" id="filtertablelinkbox">
+                    <a href="pages/filtertable.html"><span class="clickable"></span></a>
+                    <i class="fa-solid fa-table"></i>
+                    <br><br>
+                    <h2>Filter Table</h2>
+                    <h4>Comb through the data yourself.</h4>
+                </div>
+
+                <div class="col-md-2">
+                    <br><br>
+                </div>
+
+                <div class="col-md-5 linkbox" id="visualizationslinkbox">
+                    <a href="pages/datavisualizations.html"><span class="clickable"></span></a>
+                    <i class="fas fa-chart-bar"></i>
+                    <br><br>
+                    <h2>Data Visualizations</h2>
+                    <h4>Visualize the data.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of Header -->
+
+    <br><br>
+
+    <!-- Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Welcome to a world of writing, <span class="crossout">creativity,</span> and literary success! </h2>
+                <p>This website is your cheat sheet to
+                    discovering the
+                    secrets behind best-selling books and using that knowledge to sell out and write your own uninspired
+                    chart-topping novel.</p>
+                <p>Ready to cash in on the lowest common denominator and leave artistic integrity behind? Well you've
+                    come to the right place: the place where success is measured in sales figures, not critical acclaim.
+                    It's time to sell out and savor the sweet taste of literary mediocrity!</p>
+                    <br><br>
+                    <div id="sellouttext">
+                        <h2>Your dream of being a sellout begins here.</h2>
+
+                    </div>
+            </div>
+
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="resultsbox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <h2>Results</h2>
+                    <a href="pages/results.html" class="clickable"></a>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <div class="sourcesbox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fa-solid fa-cloud"></i>
+                    <h2>View the sources here</h2>
+                    <a href="pages/sources.html" class="clickable"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    <!-- End of Content -->
+
+</body>
+
+</html>

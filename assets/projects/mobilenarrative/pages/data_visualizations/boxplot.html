@@ -1,0 +1,156 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+
+<link rel="stylesheet" href="../../assets/css/style.css" />
+
+
+
+<script>
+
+
+  function Get(yourUrl) {
+    var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET", yourUrl, false);
+    Httpreq.send(null);
+    return Httpreq.responseText;
+  }
+
+  function removeDuplicates(data) {
+    return data.filter((value, index) => data.indexOf(value) === index);
+  }
+
+  var bookdata = JSON.parse(Get("https://raw.githubusercontent.com/8BallStudios/GIMM260/main/data.json"));
+  console.log(bookdata);
+  const langs = [];
+  for (var i = 0; i < bookdata.length; i++) {
+    langs.push(bookdata[i].lang);
+  }
+  const langnodupes = removeDuplicates(langs);
+
+  // set the dimensions and margins of the graph
+  var margin = { top: 10, right: 30, bottom: 30, left: 50 },
+    width = 1000 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+  // append the svg object to the body of the page
+  var svg = d3.select("#my_dataviz")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+      "translate(" + margin.left + "," + margin.top + ")");
+
+  // Read the data and compute summary statistics for each specie
+  d3.csv("https://raw.githubusercontent.com/8BallStudios/GIMM260/main/data2.csv", function (data) {
+
+    // Compute quartiles, median, inter quantile range min and max --> these info are then used to draw the box.
+    var sumstat = d3.nest() // nest function allows to group the calculation per level of a factor
+      .key(function (d) { return d.lang; })
+      .rollup(function (d) {
+        q1 = d3.quantile(d.map(function (g) { return g.copies; }).sort(d3.ascending), .25)
+        median = d3.quantile(d.map(function (g) { return g.copies; }).sort(d3.ascending), .5)
+        q3 = d3.quantile(d.map(function (g) { return g.copies; }).sort(d3.ascending), .75)
+        interQuantileRange = q3 - q1
+        min = q1 - 1.5 * interQuantileRange
+        max = q3 + 1.5 * interQuantileRange
+        return ({ q1: q1, median: median, q3: q3, interQuantileRange: interQuantileRange, min: min, max: max })
+      })
+      .entries(data)
+
+    // Show the X scale
+    var x = d3.scaleBand()
+      .range([0, width])
+      .domain(langnodupes)
+      .paddingInner(1)
+      .paddingOuter(.5)
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
+
+    // Show the Y scale
+    var y = d3.scaleLinear()
+      .domain([0, 200])
+      .range([height, 0])
+    svg.append("g").call(d3.axisLeft(y))
+
+          // Y axis label:
+          svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("transform", "rotate(-90)")
+      .attr("y", -margin.left + 20)
+      .attr("x", -margin.top - 125)
+      .text("Millions of Copies Sold")
+
+      // Add X axis label:
+      svg.append("text")
+      .attr("text-anchor", "end")
+      .attr("x", -margin.left + 500)
+      .attr("y", height + margin.top + 20)
+      .text("Language");
+
+    // Show the main vertical line
+    svg
+      .selectAll("vertLines")
+      .data(sumstat)
+      .enter()
+      .append("line")
+      .attr("x1", function (d) { return (x(d.key)) })
+      .attr("x2", function (d) { return (x(d.key)) })
+      .attr("y1", function (d) { 
+        if (d.value.min < 0) return height;
+        else return (y(d.value.min)) 
+      })
+      .attr("y2", function (d) { return (y(d.value.max)) })
+      .attr("stroke", "black")
+      .style("width", 40)
+
+    // rectangle for the main box
+    var boxWidth = 25
+    svg
+      .selectAll("boxes")
+      .data(sumstat)
+      .enter()
+      .append("rect")
+      .attr("x", function (d) { return (x(d.key) - boxWidth / 2) })
+      .attr("y", function (d) { return (y(d.value.q3)) })
+      .attr("height", function (d) { return (y(d.value.q1) - y(d.value.q3)) })
+      .attr("width", boxWidth)
+      .attr("stroke", "black")
+      .style("fill", "#69b3a2")
+
+    // Show the median
+    svg
+      .selectAll("medianLines")
+      .data(sumstat)
+      .enter()
+      .append("line")
+      .attr("x1", function (d) { return (x(d.key) - boxWidth / 2) })
+      .attr("x2", function (d) { return (x(d.key) + boxWidth / 2) })
+      .attr("y1", function (d) { return (y(d.value.median)) })
+      .attr("y2", function (d) { return (y(d.value.median)) })
+      .attr("stroke", "black")
+      .style("width", 80)
+
+    // Add individual points with jitter
+    var jitterWidth = 15
+    svg
+      .selectAll("indPoints")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", function (d) { return (x(d.lang) - jitterWidth / 2 + Math.random() * jitterWidth) })
+      .attr("cy", function (d) { return (y(d.copies)) })
+      .attr("r", 2)
+      .style("fill", "white")
+      .attr("stroke", "black")
+  })
+
+</script>

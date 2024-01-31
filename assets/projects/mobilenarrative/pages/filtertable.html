@@ -1,0 +1,181 @@
+<!doctype html>
+<html>
+
+<!--Notes
+
+-->
+
+<head>
+    <!--Meta-->
+    <title>Filter Table</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="So... You want to be a sellout author.">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="author" content="Mae Bridgeman">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!--React.js-->
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js" crossorigin></script>
+    <!--Babel-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src='../assets/js/React/Component/ReactDataTable.js' type='text/babel'></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="headerAccent">
+                        <div class="headerDivider"></div>
+                        <div class="headerAccentText accent">So,</div>
+                        <div class="headerDivider"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>You want to write a bestselling novel</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="../index.html" class="headerLink">Home</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="filtertable.html" class="headerLink">Filter Table</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="datavisualizations.html" class="headerLink">Visualizations</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="sources.html" class="headerLink">Sources</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End of Header -->
+
+    <!-- Content -->
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-12">
+                <div id="react-data-table" class="table">
+                    <p>Make sure your server is running!</p>
+                    <p>If you ran this from the files, you need to visit the correct link:</p>
+                    <a href="http://localhost:8080/pages/filtertable.html">Default</a>
+                    <br>
+                    <a href="http://localhost:3000/pages/filtertable.htmll">Port 3000</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of Content -->
+
+    <!--Footer-->
+    <div class="resultsbox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <h2>Results</h2>
+                    <a href="results.html" class="clickable"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sourcesbox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fa-solid fa-cloud"></i>
+                    <h2>View the sources here</h2>
+                    <a href="sources.html" class="clickable"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of footer-->
+
+    <script>
+        //Get data from GitHub repository
+        function Get(yourUrl) {
+            var Httpreq = new XMLHttpRequest(); // a new request
+            Httpreq.open("GET", yourUrl, false);
+            Httpreq.send(null);
+            return Httpreq.responseText;
+        }
+
+        var data = JSON.parse(Get("https://raw.githubusercontent.com/8BallStudios/GIMM260/main/data.json"));
+        console.log(data);
+
+        /*
+        const DisplayBookStats = (array = []) => {
+            let table = '';
+            if (Array.isArray(array) && array.length > 0) {
+                table += `<table class="table-responsive">
+                    <tr> 
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Language</th>
+                        <th>Release Year</th>
+                        <th>Copies Sold (millions)</th>
+                        <th>Genre</th>
+                        <th>Page Count</th>
+                     </tr>`;
+
+                for (let x = 0; x < array.length; x++) {
+                    table += `<tr> 
+                        <td>` + data[x].title + `</td>
+                        <td>` + data[x].author + `</td>
+                        <td>` + data[x].lang + `</td>
+                        <td>` + data[x].relyear + `</td>
+                        <td>` + data[x].copies + `</td>
+                        <td>` + data[x].genre + `</td>
+                        <td>` + data[x].pagecount + `</td>
+                    </tr>`
+                }
+                table += `</table>`;
+            }
+
+            return table;
+        }
+
+        document.getElementById("table").innerHTML = DisplayBookStats(data);*/
+    </script>
+
+</body>
+
+</html>

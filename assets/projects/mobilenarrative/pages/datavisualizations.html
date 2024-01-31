@@ -1,0 +1,387 @@
+<!doctype html>
+<html>
+
+<!--
+    
+    Notes:
+
+-->
+
+<head>
+    <!--Meta-->
+    <title>Data Visualizations</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="So... You want to be a sellout author.">
+    <meta name="keywords" content="HTML, CSS">
+    <meta name="author" content="Mae Bridgeman">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <!--Stylesheet-->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!--D3-->
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+
+    <!-- Function for radial charts -->
+    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+
+    <!-- Plotly - used for parallel plot -->
+    <script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="headerAccent">
+                        <div class="headerDivider"></div>
+                        <div class="headerAccentText accent">So,</div>
+                        <div class="headerDivider"></div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>You want to write a bestselling novel</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="../index.html" class="headerLink">Home</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="filtertable.html" class="headerLink">Filter Table</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="datavisualizations.html" class="headerLink">Visualizations</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+
+                <div class="col-xl-3 headerLinkDiv">
+                    <img src="../assets/img/pointing_hand_right.png" class="hand" alt="Hand pointing right">
+                    <a href="sources.html" class="headerLink">Sources</a>
+                    <img src="../assets/img/pointing_hand.png" class="hand" alt="Hand pointing left">
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End of Header -->
+
+    <!-- Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h2>Parallel Coordinates Plot</h2>
+                <div id="parallel" class="graph"></div>
+            </div>
+            <div class="col-md-2">
+                <br><br>
+                <br><br>
+                <br><br>
+
+                <p>Use the purple bar on the vertical lines to filter by results that meet all criteria.</p>
+                <p>To create a new filter, or to change the size of an existing one, click and drag on a vertical line.
+                </p>
+                <p>To delete a filter, click it once.</p>
+                <p>To move a filter, click and drag it.</p>
+                <br><br>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- 
+        
+        You may notice I use iframes here instead of changing the divs with javascript in this file.
+        I was running into an issue with D3 where the graph would work on its own page, 
+        but when put in a page with other visualizations, it wouldn't.
+        So, I have pages dedicated to specific visualizations and just use an iframe to show it here
+    
+    -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Bubble Graph</h2>
+                <iframe src="data_visualizations/bubble.html" title="Bubble Graph" class="graph"></iframe>
+            </div>
+            <div class="col-md-6">
+                <br><br><br><br>
+                <p>Bubble size is determined by copies sold.</p>
+                <p>Bubble color is determined by genre.</p>
+                <p>Hover over a bubble to learn more about that data point.</p>
+                <hr>
+                <p>Some notable results:</p>
+                <ul>
+                    <li>Most best-selling books were released between 1925 and now.</li>
+                    <li>The best-selling genres appear to be Children's, Historical Fiction and Fantasy.</li>
+                    <li>Most best-selling books have between 100 and 500 pages (an exception to this is Children's
+                        books, which have an approximate range of 0-150).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Violin Graph</h2>
+                <iframe src="data_visualizations/violin.html" title="Violin Graph" class="graph"></iframe>
+            </div>
+            <div class="col-md-6">
+                <br><br><br><br>
+                <p>This violin plot shows the distribution of page count by language.</p>
+                <p>The plot has a horizontal scroll bar so you can view the rest of the languages.</p>
+                <hr>
+                <p>Some notable results:</p>
+                <ul>
+                    <li>If writing in English, aim to write about 350 pages.</li>
+                    <li>If writing in English, try to avoid going over 700 pages.</li>
+                    <li>If writing in French, German, or Japanese, try to avoid going over 400 pages.</li>
+                    <li>Russian books had the largest range of page counts.</li>
+                    <li>If writing in French, aim for about 300 pages.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Boxplot</h2>
+                <iframe src="data_visualizations/boxplot.html" class="graph" title="Boxplot"></iframe>
+            </div>
+            <div class="col-md-6">
+                <br><br><br><br>
+                <p>This boxplot shows the distribution of copies sold by language.</p>
+                <hr>
+                <p>Notice how the French column's upper quartile appears much higher than other languages. This is due
+                    to the low number of data points of French books, combined with one of the data points having sold
+                    200 million copies.</p>
+                <p>It is important to note that while the English column may be incredibly accurate, not many other
+                    columns are, due to only having a few data points.</p>
+                <p>Something that could alleviate this discrepancy would to be gather a certain number of data points
+                    for each language. However, this would have the side effect of making it seem as though a higher
+                    proportion of the bestselling books of all time were languages other than English.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- End of Content -->
+
+    <!--Footer-->
+    <div class="resultsbox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <h2>Results</h2>
+                    <a href="results.html" class="clickable"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sourcesbox">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <i class="fa-solid fa-cloud"></i>
+                    <h2>View the sources here</h2>
+                    <a href="sources.html" class="clickable"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End of footer-->
+
+    <script>
+        //Get data from GitHub repository
+        function Get(yourUrl) {
+            var Httpreq = new XMLHttpRequest(); // a new request
+            Httpreq.open("GET", yourUrl, false);
+            Httpreq.send(null);
+            return Httpreq.responseText;
+        }
+
+        var bookdata = JSON.parse(Get("https://raw.githubusercontent.com/8BallStudios/GIMM260/main/data.json"));
+        console.log(bookdata);
+
+        function drawparallel() {
+            //Get data from GitHub repository
+            function Get(yourUrl) {
+                var Httpreq = new XMLHttpRequest(); // a new request
+                Httpreq.open("GET", yourUrl, false);
+                Httpreq.send(null);
+                return Httpreq.responseText;
+            }
+
+            const authors = [];
+            for (var i = 0; i < bookdata.length; i++) {
+                authors.push(bookdata[i].author);
+            }
+
+            const relyears = [];
+            for (var i = 0; i < bookdata.length; i++) {
+                relyears.push(bookdata[i].relyear);
+            }
+
+            const pagecounts = [];
+            for (var i = 0; i < bookdata.length; i++) {
+                pagecounts.push(bookdata[i].pagecount);
+            }
+
+            const copycounts = [];
+            for (var i = 0; i < bookdata.length; i++) {
+                copycounts.push(bookdata[i].copies);
+            }
+
+            const languages = [];
+            for (var i = 0; i < bookdata.length; i++) {
+                languages.push(bookdata[i].lang);
+            }
+
+            const genres = [];
+            for (var i = 0; i < bookdata.length; i++) {
+                genres.push(bookdata[i].genre);
+            }
+
+            function removeDuplicates(data) {
+                return data.filter((value, index) => data.indexOf(value) === index);
+            }
+
+            const genresnodupes = removeDuplicates(genres);
+            genresnodupes.sort();
+            genresnodupes.reverse();
+            const langnodupes = removeDuplicates(languages);
+            langnodupes.sort();
+            langnodupes.reverse();
+
+            const genresIndex = [];
+            const genreTickVals = [];
+
+            const langIndex = [];
+            const langTickVals = [];
+
+            for (var i = 0; i < genres.length; i++) {
+                getGenreIndex(genres[i]);
+            }
+            for (var i = 0; i < languages.length; i++) {
+                getLangIndex(languages[i]);
+            }
+
+            function getGenreIndex(value) {
+                for (var i = 0; i < genresnodupes.length; i++) {
+                    if (value == genresnodupes[i]) {
+                        genresIndex.push(i + 1);
+                        genreTickVals.push(genreTickVals.length + 1);
+                        return;
+                    }
+                }
+            }
+            function getLangIndex(value) {
+                for (var i = 0; i < langnodupes.length; i++) {
+                    if (value == langnodupes[i]) {
+                        langIndex.push(i + 1);
+                        langTickVals.push(langTickVals.length + 1);
+                        return;
+                    }
+                }
+            }
+
+
+            var trace = {
+                type: 'parcoords',
+                line: {
+                    color: 'blue'
+                },
+
+                dimensions: [
+                    {
+                        range: [1, genresnodupes.length],
+                        label: 'Genre',
+                        values: genresIndex,
+                        tickvals: genreTickVals,
+                        ticktext: genresnodupes
+                    }, {
+                        range: [1, langnodupes.length],
+                        label: 'Language',
+                        values: langIndex,
+                        tickvals: langTickVals,
+                        ticktext: langnodupes
+                    }, {
+                        range: [1775, 2023],
+                        label: 'Release Year',
+                        values: relyears,
+                        tickvals: [1775, 1800, 1825, 1850, 1875, 1900, 1925, 1950, 1975, 2000, 2023]
+                    }, {
+                        range: [1, 1200],
+                        label: 'Page Count',
+                        values: pagecounts,
+                        tickvals: [1, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+                    }, {
+                        range: [0, 200],
+                        constraintrange: [1, 25],
+                        label: 'Copies Sold',
+                        values: copycounts,
+                        tickvals: [0, 25, 50, 75, 100, 125, 150, 175, 200]
+                    }]
+            };
+
+            var layout = {
+                height: 750,
+                margin: {
+                    l: 175,
+                    r: 100,
+                    b: 50,
+                    t: 50,
+                    pad: 6
+                },
+
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)'
+            };
+
+            var config = { responsive: true }
+
+
+            var data = [trace]
+
+            Plotly.newPlot('parallel', data, layout, config);
+        }
+        drawparallel();
+
+    </script>
+</body>
+
+</html>
